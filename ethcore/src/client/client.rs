@@ -484,8 +484,8 @@ impl Importer {
 
         // Final Verification
         // FIXME: Otherwise the BSC block #5183999 verficiation fails.
-        warn!(target: "client", " #{} ({})\nError 1: ", header.number(), header.hash());
-        warn!(target: "client", " #{} ({})\nError 2: ", locked_block.header.number(), locked_block.header.hash());
+        info!(target: "client", " #{} ({})\nError 1: ", header.number(), header.hash());
+        info!(target: "client", " #{} ({})\nError 2: ", locked_block.header.number(), locked_block.header.hash());
         if let Err(e) = self
             .verifier
             .verify_block_final(&header, &locked_block.header)

@@ -291,7 +291,7 @@ pub fn verify_block_final(expected: &Header, got: &Header) -> Result<(), Error> 
         println!("unexpected header  {:?}", expected.number());
         println!("{:?}", expected.state_root());
         println!("{:?}", got.state_root());
-        warn!(target: "expected.state_root", " #{} ({})\nError 1: ", expected.state_root(), got.state_root());
+        info!(target: "expected.state_root", " #{} ({})\nError 1: ", expected.state_root(), got.state_root());
         return Err(From::from(BlockError::InvalidStateRoot(Mismatch {
             expected: *expected.state_root(),
             found: *got.state_root(),
@@ -304,14 +304,14 @@ pub fn verify_block_final(expected: &Header, got: &Header) -> Result<(), Error> 
             expected.gas_used(),
             got.gas_used()
         );
-        warn!(target: "expected.gas_used", " #{} ({})\nError 1: ", expected.gas_used(), got.gas_used());
+        info!(target: "expected.gas_used", " #{} ({})\nError 1: ", expected.gas_used(), got.gas_used());
         return Err(From::from(BlockError::InvalidGasUsed(Mismatch {
             expected: *expected.gas_used(),
             found: *got.gas_used(),
         })));
     }
     if expected.log_bloom() != got.log_bloom() {
-        warn!(target: "expected.log_bloom", " #{} ({})\nError 1: ", expected.log_bloom(), got.log_bloom());
+        info!(target: "expected.log_bloom", " #{} ({})\nError 1: ", expected.log_bloom(), got.log_bloom());
         return Err(From::from(BlockError::InvalidLogBloom(Box::new(
             Mismatch {
                 expected: *expected.log_bloom(),
@@ -320,7 +320,7 @@ pub fn verify_block_final(expected: &Header, got: &Header) -> Result<(), Error> 
         ))));
     }
     if expected.receipts_root() != got.receipts_root() {
-        warn!(target: "expected.receipts_root", " #{} ({})\nError 1: ", expected.receipts_root(), got.receipts_root());
+        info!(target: "expected.receipts_root", " #{} ({})\nError 1: ", expected.receipts_root(), got.receipts_root());
         return Err(From::from(BlockError::InvalidReceiptsRoot(Mismatch {
             expected: *expected.receipts_root(),
             found: *got.receipts_root(),
