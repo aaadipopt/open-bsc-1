@@ -494,6 +494,7 @@ impl Importer {
             bail!(e);
         }
 
+        info!(target: "client", " #{} ({})\n =========== pass verify_block_final", locked_block.header.number(), locked_block.header.hash());
         let pending = self.check_epoch_end_signal(
             &header,
             bytes,
@@ -501,6 +502,7 @@ impl Importer {
             locked_block.state.db(),
             client,
         )?;
+        info!(target: "client", " #{} ({})\n =========== pass check_epoch_end_signal", locked_block.header.number(), locked_block.header.hash());
 
         Ok((locked_block, pending))
     }

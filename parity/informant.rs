@@ -358,6 +358,7 @@ impl ChainNotify for Informant<FullNodeInformantData> {
             .map(|b| b.transactions_count())
             .sum();
 
+        info!(target: "import", " ========== Imported before ripe" );
         if ripe {
             if let Some(block) = new_blocks
                 .imported

@@ -1435,6 +1435,8 @@ impl ChainSync {
         let queue_info = io.chain().queue_info();
         let is_syncing = self.status().is_syncing(queue_info);
 
+        trace!(target: "sync", "Propagating blocks, is_syncing={} sealed={} proposed={}", is_syncing, sealed.is_empty(), proposed.is_empty());
+
         if !is_syncing || !sealed.is_empty() || !proposed.is_empty() {
             trace!(target: "sync", "Propagating blocks, state={:?}", self.state);
             SyncPropagator::propagate_latest_blocks(self, io, sealed);
@@ -1448,7 +1450,7 @@ impl ChainSync {
         if !is_syncing && !enacted.is_empty() && !self.peers.is_empty() {
             // Select random peer to re-broadcast transactions to.
             let peer = random::new().gen_range(0, self.peers.len());
-            trace!(target: "sync", "Re-broadcasting transactions to a random peer.");
+            trace!(target: "sync", "Re-broadcasting transactions to a random peer. {}", peer_info);
             self.peers.values_mut().nth(peer).map(|peer_info| {
                 peer_info.last_sent_transactions.clear();
             });
