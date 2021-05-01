@@ -134,7 +134,7 @@ pub struct CommonParams {
     /// Number of first block where EIP-2028 rules begin.
     pub eip2028_transition: BlockNumber,
     /// Number of first block where hard fork begin.
-    pub fork_block: BlockNumber,
+    /// pub fork_block: BlockNumber,
     /// Number of first block where EIP-2315 rules begin.
     pub eip2315_transition: BlockNumber,
     /// Number of first block where dust cleanup rules (EIP-168 and EIP169) begin.
