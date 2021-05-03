@@ -32,6 +32,7 @@
 		"eip1884Transition": "0x0",
 		"eip2028Transition": "0x0",
 		"forkBlock": "0x4f1a00",
+		"forkCanonHash": "0xd43988be65c20cbd8051da8560768542f5f4314fef053a02aac7d4a26b4b8aff",
 		"gasLimitBoundDivisor": "0x100",
 		"maxCodeSize": "0x6000",
 		"maxCodeSizeTransition": "0x0",

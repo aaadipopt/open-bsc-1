@@ -349,9 +349,6 @@ impl From<ethjson::spec::Params> for CommonParams {
             eip2028_transition: p
                 .eip2028_transition
                 .map_or_else(BlockNumber::max_value, Into::into),
-            fork_block: p
-                .fork_block
-                .map_or_else(BlockNumber::max_value, Into::into),
             eip2315_transition: p
                 .eip2315_transition
                 .map_or_else(BlockNumber::max_value, Into::into),
