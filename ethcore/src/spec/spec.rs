@@ -134,7 +134,7 @@ pub struct CommonParams {
     /// Number of first block where EIP-2028 rules begin.
     pub eip2028_transition: BlockNumber,
     /// Number of first block where hard fork begin.
-    pub tt_fork_block: BlockNumber,
+    // pub tt_fork_block: BlockNumber,
     /// Number of first block where EIP-2315 rules begin.
     pub eip2315_transition: BlockNumber,
     /// Number of first block where dust cleanup rules (EIP-168 and EIP169) begin.
@@ -258,9 +258,9 @@ impl CommonParams {
             return Some("validateChainIdTransition");
         }
 
-        if self.tt_fork_block != 0 {
-            return Some("forkBlock");
-        }
+        // if self.tt_fork_block != 0 {
+        //     return Some("forkBlock");
+        // }
 
         None
     }
@@ -352,9 +352,9 @@ impl From<ethjson::spec::Params> for CommonParams {
             eip2315_transition: p
                 .eip2315_transition
                 .map_or_else(BlockNumber::max_value, Into::into),
-            tt_fork_block: p
-                .tt_fork_block
-                .map_or_else(BlockNumber::max_value, Into::into),
+            // tt_fork_block: p
+            //     .tt_fork_block
+            //     .map_or_else(BlockNumber::max_value, Into::into),
             dust_protection_transition: p
                 .dust_protection_transition
                 .map_or_else(BlockNumber::max_value, Into::into),
@@ -642,7 +642,7 @@ impl Spec {
             params.eip1884_transition,
             params.eip2028_transition,
             params.eip2315_transition,
-            params.tt_fork_block,
+            // params.tt_fork_block,
             params.dust_protection_transition,
             params.wasm_activation_transition,
             params.wasm_disable_transition,
