@@ -134,7 +134,7 @@ pub struct CommonParams {
     /// Number of first block where EIP-2028 rules begin.
     pub eip2028_transition: BlockNumber,
     /// Number of first block where hard fork begin.
-    /// pub fork_block: BlockNumber,
+    pub fork_block_tt: BlockNumber,
     /// Number of first block where EIP-2315 rules begin.
     pub eip2315_transition: BlockNumber,
     /// Number of first block where dust cleanup rules (EIP-168 and EIP169) begin.
@@ -351,6 +351,9 @@ impl From<ethjson::spec::Params> for CommonParams {
                 .map_or_else(BlockNumber::max_value, Into::into),
             eip2315_transition: p
                 .eip2315_transition
+                .map_or_else(BlockNumber::max_value, Into::into),
+            fork_block_tt: p
+                .fork_block_tt
                 .map_or_else(BlockNumber::max_value, Into::into),
             dust_protection_transition: p
                 .dust_protection_transition
@@ -638,8 +641,8 @@ impl Spec {
             params.eip1344_transition,
             params.eip1884_transition,
             params.eip2028_transition,
-            params.fork_block,
             params.eip2315_transition,
+            params.fork_block_tt,
             params.dust_protection_transition,
             params.wasm_activation_transition,
             params.wasm_disable_transition,
