@@ -106,7 +106,7 @@ pub struct Params {
     /// See `CommonParams` docs.
     pub eip2315_transition: Option<Uint>,
     /// See `CommonParams` docs.
-    /// pub fork_block: Option<Uint>,
+    pub tt_fork_block: Option<Uint>,
     /// See `CommonParams` docs.
     pub dust_protection_transition: Option<Uint>,
     /// See `CommonParams` docs.
